@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>招募合伙人</title>
+    <link rel="stylesheet" href="__SPI__/css/base.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:100,300,400,500,700,900">
+    <link rel="stylesheet" href="__SPI__/css/optimal.css">
+    <link rel="stylesheet" href="__HOME__/font/syht.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+    <div class='container' data-pageId="1">
+
+        <!-- 导航部分 -->
+        {include file='common/header' /}
+    </div>
+
+    <div>
+        <div class="fourzerofour">
+            <img src="__PUBLIC__/error_pic.png">
+        </div>
+        <div class="building">
+            正在建设中...
+        </div>
+        <div class="goHome">
+            <span><i class="clock">3</i>秒后返回首页</span>
+            <a href="{:url('/home/index/index')}">回到首页</a>
+        </div>
+    </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        var count = 3;
+        var timer = setInterval(function () {
+            $('.clock').html(count);
+            count--;
+            if (count < 0) {
+                clearInterval(timer)
+                location.href="{:url('/home/index/index')}"
+            }
+        }, 1000)
+
+    })
+</script>
+
+</html>

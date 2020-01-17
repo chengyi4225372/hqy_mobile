@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>/*@cc_on document.write('\x3Cscript id="_iealwn_js" src="https://support.dmeng.net/ie-alert-warning/latest.js">\x3C/script>'); @*/</script>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>{$title}</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- <script src='__SPI__/js/xlPaging.js'></script> -->
+    <link rel="stylesheet" href="__SPI__/css/base.css">
+    <!-- <link rel="stylesheet" href="__SPI__/css/layui.css"  media="all"> -->
+    <link rel="stylesheet" href="__SPI__/css/Informationlist.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:100,300,400,500,700,900">
+    <link rel="stylesheet" href="__HOME__/font/syht.css">
+    <script src="__SPI__/js/clamp.js"></script>
+
+    <script src='__SPI__/js/industry.js'></script>
+    <script src="__PUBLIC__/assets/plugins/layui/layui.all.js"></script>
+    <script src='__HOME__/js/common.js'></script>
+    <script src='__PUBLIC__/common/js/public.js'></script>
+</head>
+
+<body>
+
+<div class='container' data-pageId="5">
+
+    <!-- 导航部分 -->
+    {include file='common/header' /}
+
+
+    <div class="bg_banner">
+        <div class="w banner">
+
+            <img src="__SPI__/images/news.png" alt="">
+        </div>
+    </div>
+
+    <!-- 面包屑导航 -->
+    <div class="bg_breadCrumbs">
+        <div class="w bread-crumbs">
+            <span><a href="{:url('/home/index/index')}">首页</a></span> >
+            <span><a class="current" style="color:#3E92FF;" onclick="go_news(this)"
+                     data-url="{:url('/home/index/industry')}">新闻资讯</a></span> <span></span>
+        </div>
+    </div>
+
+    <!-- 信息列表 -->
+    <div class="content-box">
+        <div class="m content">
+
+            <div class="information-list">
+                <div class="tabs clearfix">
+                    <!-- <ul class="clearfix fl">
+                  <li class="li-active">招商政策</li>
+                  <li>招标信息</li>
+                </ul> -->
+                    <div class="govPolicy fl">新闻资讯</div>
+
+                </div>
+
+                <!-- 热搜 -->
+                <div class="hotWord">
+                    <div class="bgHot">
+                        <span style='white-space: nowrap;'>热门关键词</span>
+                        <ul>
+                            {volist name='four' id='ff' key='k'}
+                            <li onclick="hotsearch(this);" data-title="{$ff.title}"
+                                data-href="{:url('/home/index/industrydetail')}"
+                                data-url="{:url('/home/index/industryapi')}" data-id="{$k}">
+                                <span style='white-space: nowrap;'>{$ff.title}</span>
+                                <span class="close" onclick="nullhot(this)"
+                                    data-title="{$ff.title}"  data-url="{:url('/home/index/industryapi')}">✕</span>
+                            </li>
+                            {/volist}
+                        </ul>
+                    </div>
+                    <div class="search-box">
+                        <input type="text" id="keyword" value="{$Think.get.keyword}" placeholder="请输入关键字">
+                        <div id="searched" style="cursor:pointer;" data-url="{:url('/home/index/industry/index')}">
+                            搜索
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="bg_divide">
+
+                    <div class="divide"></div>
+                </div>
+
+
+                <div class="tabs-items show">
+                    <ul id="shang">
+                        {empty name='biao'}
+                        <li>
+                            <div class="tabs-items-content">
+                                <div class="tabs-items-content-text figcaption">
+                                    <p>抱歉，没有找到与<b style="color: #ff2222">{$Think.get.keyword}</b>的相关结果。</p>
+                                </div>
+                            </div>
+                        </li>
+                        {else /}
+                        {volist name='biao' id='ww'}
+                        <li>
+                            <a href="{:config('curl.website')}/home/index/industrydetail?mid={$ww['id']}">
+                                <div class="infoItem">
+                                    <div class="infoLeft">
+                                        <img src="{$ww.imgs?$ww.imgs:'__HOME__/images/infoItem.jpg';}" alt="">
+                                    </div>
+
+                                    <div class="infoRight">
+                                        <div class="rightTop">
+                                            <div class="itemTitle">{$ww.title|default=''}</div>
+                                            <span class="itemTime">
+                                                    <img src="__SPI__/images/shijian2x.png"
+                                                         alt=""><span>{:date('Y-m-d',strtotime($ww.release_time))}</span>
+                                                </span>
+                                        </div>
+                                        <p class="limitP">
+                                            {$ww.describe}
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </a>
+
+
+                            <ul class="tags">
+                                {empty name='$ww.keyword'}
+                                {else /}
+                                {foreach name="$ww.keyword" item="key" key="k" }
+                                <li data-title="{$key}">{$key}</li>
+                                {/foreach}
+                                {/empty}
+                            </ul>
+                        </li>
+                        {/volist}
+                        {/empty}
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- 分页 -->
+    <div class="w pageNation">
+        <!--        <ul class="page">-->
+        <!--            <li class="prev">上一页</li>-->
+        <!--            <li class="currentPage">1</li>-->
+        <!--            <li>2</li>-->
+        <!--            <li class="next">下一页</li>-->
+        <!--        </ul>-->
+        {$biao->render()}
+    </div>
+
+
+    <!-- 底部 -->
+    {include file="common/footer" /}
+
+    <!-- 返回顶部 -->
+    <div class='goTop' id="goTop">
+        <i></i>
+        <div>返回顶部</div>
+    </div>
+
+
+</div>
+
+
+</body>
+<script>
+   
+
+    /* 信息列表显示2行加省略号 */
+    $('.limitP').each(function () {
+        $clamp($(this)[0], {clamp: 2})
+    })
+</script>
+
+
+</html>

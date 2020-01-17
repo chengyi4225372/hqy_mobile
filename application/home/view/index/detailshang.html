@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <!-- <script>/*@cc_on window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); @*/</script> -->
+    <script>/*@cc_on document.write('\x3Cscript id="_iealwn_js" src="https://support.dmeng.net/ie-alert-warning/latest.js">\x3C/script>'); @*/</script>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>{$info.title}</title>
+    <meta name="keywords" content="{$info.seo_key|default=''}" />
+    <meta name="description" content="{$info.describe}" />
+
+    <link rel="stylesheet" href="__SPI__/css/base.css">
+    <link rel="stylesheet" href="__SPI__/css/detail.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:100,300,400,500,700,900">
+    <link rel="stylesheet" href="__HOME__/font/syht.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src='__HOME__/js/common.js'></script>
+    <script src='__PUBLIC__/common/js/public.js'></script>
+    <script src="__SPI__/js/detail.js"></script>
+    <script src="__PUBLIC__/assets/plugins/layui/layui.all.js"></script>
+    <style>
+        /* 归属信息 */
+        .affiliation {
+            text-align: right;
+            font-size: 10px;
+            color: #ccc;
+            padding-right: 20px;
+            margin-top: 200px;
+        }
+
+        .page {
+            margin-top: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='container' data-pageId="4">
+
+        <!-- 导航部分 -->
+        {include file='common/header' /}
+    <div class="bgBread">
+        <div class='w bread_title'>
+            <a class="actives" href="{:url('/home/index/index')}">首页 ></a>
+            <a class="actives" onclick="go_news(this)" data-url="{:url('/home/index/infoList')}">政府招商政策</a> >
+            <a class="activees" href="javasrcipt:void(0)">详情</a>
+        </div>
+    </div>
+
+        <div class='main_content'>
+            <div class='content_middle'>
+                <div class='pic_total'>
+                    <div class='pic_title'>{$info.title}</div>
+                    <div class='time'>{$info.release_time}</div>
+                    <div class='line'></div>
+                    <div class='tuwen'>
+                        <div class='wenzi'>{$info.content}</div>
+
+                        <!-- <div class="affiliation">
+                            <p>本信息来源：中国招标网</p>
+                        </div> -->
+
+                        
+                    </div>
+                    <div class='page'>
+                            {empty name='top'}
+                            <div><span>上一篇:</span><a href="javascript:;">已经是第一篇了</a></div>
+                            {else /}
+                            <div><span>上一篇:</span><a
+                                    href="{:url('/home/index/detailshang',array('mid'=>$top.id))}">{$top.title}</a>
+                            </div>
+                            {/empty}
+
+                            {empty name='next'}
+                            <div><span>下一篇:</span><a href="javascript:;">已经是最后一篇了</a></div>
+                            {else /}
+                            <div><span>下一篇:</span><a
+                                    href="{:url('/home/index/detailshang',array('mid'=>$next.id))}">{$next.title}</a>
+                            </div>
+                            {/empty}
+                        </div>
+                </div>
+            </div>
+        </div>
+        <!-- 底部 -->
+        {include file="common/footer" /}
+
+        <!-- 返回顶部 -->
+        <div class='goTop' id="goTop">
+            <i></i>
+            <div>返回顶部</div>
+        </div>
+
+    </div>
+ 
+</body>
+
+</html>
