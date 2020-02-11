@@ -135,17 +135,22 @@ class Apiservice
         if(!empty($infos)){
             $info = $infos->toArray();
             $info['categroy'] = $status[$infos['pid']];
-            $pregRule = "/<[img|IMG].*?src=[\'|\"](.*?(?:[\.jpg|\.jpeg|\.png|\.gif|\.bmp]))[\'|\"].*?[\/]?>/";
-            $info['content'] = preg_replace($pregRule, '<img src="' . $baseUrl . '${1}">', $info['content']);
-//            preg_match_all('/(?<=img.src=").*?(?=")/', $content, $out, PREG_PATTERN_ORDER);
-//            if (!empty($out)) {
-//                foreach ($out as $v) {
-//                    foreach ($v as $j) {
-//                        $url = $baseUrl.$j;
-//                        $info['content'] = str_replace($j, $url, $content);   //替换相对路径为绝对路径
-//                    }
-//                }
-//            }
+/*            if(stripos($info['content'],$baseUrl) === false){
+                $pregRule = "/<[img|IMG].*?src=[\'|\"](.*?(?:[\.jpg|\.jpeg|\.png|\.gif|\.bmp]))[\'|\"].*?[\/]?>/";
+                $info['content'] = preg_replace($pregRule, '<img src="' . $baseUrl . '${1}">', $info['content']);
+            }*/
+
+            preg_match_all('/(?<=img.src=").*?(?=")/', $info['content'], $out, PREG_PATTERN_ORDER);
+            if (!empty($out)) {
+                foreach ($out as $v) {
+                    foreach ($v as $j) {
+                        if(stripos($j,$baseUrl) === false){
+                            $url = $baseUrl.$j;
+                            $info['content'] = str_replace($j, $url, $info['content']);   //替换相对路径为绝对路径
+                        }
+                    }
+                }
+            }
         }else{
             $info = [];
         }
@@ -437,19 +442,19 @@ class Apiservice
             $keyword = array_map(function($par){
                 return '%'.$par.'%';
             },$keyword);
-            $wh['keyword'] = ['LIKE',$keyword,'OR'];
-            $wh['title'] = ['LIKE','%'.$title.'%'];
+            $w['keyword'] = ['LIKE',$keyword,'OR'];
+            $w['title'] = ['LIKE','%'.$title.'%'];
         }
         //如果是只搜标题，不搜关键字
         if(empty($keyword) && !empty($title)){
-            $wh['title'] = ['LIKE','%'.$title.'%'];
+            $w['title'] = ['LIKE','%'.$title.'%'];
         }
         //如果只搜关键字，不搜标题
         if(!empty($keyword) && is_array($keyword) && empty($title)){
             $keyword = array_map(function($par){
                 return '%'.$par.'%';
             },$keyword);
-            $wh['keyword'] = ['LIKE',$keyword,'OR'];
+            $w['keyword'] = ['LIKE',$keyword,'OR'];
         }
 
         $info  = Info::instance()->where($w)->order('release_time desc')->find();

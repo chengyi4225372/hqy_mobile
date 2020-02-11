@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:70:"/opt/web/hqy_/public/../application/v1/view/info/infos/infos_edit.html";i:1578883874;s:52:"/opt/web/hqy_/application/v1/view/layout/dialog.html";i:1575880777;s:50:"/opt/web/hqy_/application/v1/view/common/meta.html";i:1575011765;s:52:"/opt/web/hqy_/application/v1/view/common/script.html";i:1575011765;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:70:"/opt/web/hqy_/public/../application/v1/view/info/infos/infos_edit.html";i:1578543707;s:52:"/opt/web/hqy_/application/v1/view/layout/dialog.html";i:1575880777;s:50:"/opt/web/hqy_/application/v1/view/common/meta.html";i:1575011765;s:52:"/opt/web/hqy_/application/v1/view/common/script.html";i:1575011765;}*/ ?>
 <!DOCTYPE html>
 <html lang="<?php echo $config['language']; ?>">
 <head>
@@ -92,9 +92,9 @@
                 <div class="form-group">
                     <label for="keyword" class="col-sm-3 control-label">新闻关键字列表：</label>
                     <div class="col-sm-9" >
-                        <select id="keyword" class="selectpicker" multiple >
+                        <select id="keyword" class="selectpicker" multiple  title="<?php echo $info['keyword']; ?>">
                             <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$co): $mod = ($i % 2 );++$i;?>
-                            <option value="<?php echo $co['title']; ?>" data-width="100%" <?php if(in_array($co['title'],$info['keywords'])): ?> selected="selected" <?php endif; ?>><?php echo $co['title']; ?></option>
+                            <option value="<?php echo $co['title']; ?>" data-width="100%" <?php if(in_array($co['title'],$keywords)): ?> selected="selected" <?php endif; ?>><?php echo $co['title']; ?></option>
                             <?php endforeach; endif; else: echo "" ;endif; ?>
                         </select>
                     </div>
@@ -129,7 +129,7 @@
         </div>
         <div class="td-align dialog-footer">
             <button class="btn btn-warning cancle"> <i class="fa fa-close"></i> 取消</button>
-            <button class="btn btn-primary infosedits" type="button" page="<?php echo $params['pages']; ?>" category="<?php echo $params['category']; ?>" searchField="<?php echo $params['searchField']; ?>" searchValue="<?php echo $params['searchValue']; ?>"  data-url="<?php echo url('/v1/info/infos/infosEdit'); ?>"><i class="fa fa-save"></i> 确定提交</button>
+            <button class="btn btn-primary infosedits" type="button"  data-url="<?php echo url('/v1/info/infos/infosEdit'); ?>"><i class="fa fa-save"></i> 确定提交</button>
 
         </div>
     </form>

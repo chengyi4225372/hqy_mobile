@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:67:"C:\phpEnv\www\hqy_\public/../application/home\view\index\index.html";i:1578994239;s:59:"C:\phpEnv\www\hqy_\application\home\view\common\footer.html";i:1578557291;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:67:"C:\phpEnv\www\hqy_\public/../application/home\view\index\index.html";i:1577082303;s:59:"C:\phpEnv\www\hqy_\application\home\view\common\footer.html";i:1577086421;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -10,11 +10,10 @@
     <meta name="renderer" content="webkit" />
     <meta name="force-rendering" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script>/*@cc_on document.write('\x3Cscript id="_iealwn_js" src="https://support.dmeng.net/ie-alert-warning/latest.js">\x3C/script>'); @*/</script>
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>节税平台代理_灵活用工加盟_企业服务代理_一体化政企服务招商代理平台-惠企云官网</title>
-    <meta name="keywords" content="税务筹划代理,税收筹划代理,节税筹划代理,灵活用工加盟,企业服务代理,个人避税代理,企业资源变现,企业服务项目,财税代理,工商代理,工商代理公司,税负转嫁平台,惠企云" />
-    <meta name="description" content="惠企云深耕政府服务外包和企业商务服务领域，深度研究财税管理在新经济时代的创新和运用，打造可持续发展的政企互联共同体！将【惠灵工】、【惠优税】、【惠多薪】、【惠创业】、【惠找事】、【惠企动】六大产品融汇，打造一站式互联网服务平台，量身定制一体化财税筹划解决方案，为公司可持续性发展提供有力保障！" />
+    <title>惠企云</title>
     <link rel="stylesheet" href="/static/home/css/base.css">
     <link rel="stylesheet" href="/static/assets/plugins/layui/css/layui.css">
     <link rel="stylesheet" href="/static/home/css/index.css">
@@ -30,7 +29,9 @@
 
 <body id="getdata" data="<?php echo $count; ?>">
 
-    <div class='container' data-pageId="0">
+    <div class='container'>
+
+
         <!-- 头部 -->
         <div class='header'>
             <!-- 头部图标 -->
@@ -43,25 +44,8 @@
                             </div>
                             <div>
                                 <div>
-                                    <div class='wx'>
-                                        <div class="topQRCode qrwx">
-                                            <p>惠企云官方微信</p>
-                                            <div class="codeBox">
-                                                <img src="/static/home/images/wxCode.png" alt="">
-                                            </div>
-                                            <img src="/static/home/images/close2.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class='bo'>
-                                        <div class="topQRCode qrwb">
-                                            <p>惠企云官方微博</p>
-                                            <div class="codeBox">
-                                                <img src="/static/home/images/wbCode.png" alt="">
-                                            </div>
-                                            <img src="/static/home/images/close2.png" alt="">
-                                        </div>
-
-                                    </div>
+                                    <span class='wx'></span>
+                                    <sapn class='bo'></sapn>
                                 </div>
                                 <div>
                                     <span class='email'></span>
@@ -121,7 +105,7 @@
                                         </dl>
                                         <dl>
                                             <dt><a class="secStatus" href="<?php echo url('/home/business/index'); ?>">惠创业</a></dt>
-                                            <dd>· 创业公司</dd>
+                                            <dd>· 武汉创业公司</dd>
                                             <dd>· 一站式商务服务</dd>
                                         </dl>
                                         <dl>
@@ -248,13 +232,14 @@
                     <div class='zhao_title'>
                     </div>
 
-                    <!-- 搜索去掉---2019-12-23 运营已同意-->
-<!--                    <div class='zhaoSearch'>
+                    <!-- 搜索 -->
+                    <div class='zhaoSearch'>
                         <div class='searchLogo'>
                             <i onclick="search(this)" data-url="<?php echo url('/home/index/infoList'); ?>"></i>
                             <input type="text" id="keyword" placeholder="搜索相关信息....">
                         </div>
-                    </div>-->
+                        <!-- <button>查询</button> -->
+                    </div>
                 </div>
 
 
@@ -395,6 +380,8 @@
         </div>
     </div>
 
+    <!-- 底部 -->
+
 
     <div class='goTop' id="goTop">
         <i></i>
@@ -402,8 +389,6 @@
     </div>
 
     </div>
-
-    <!-- 底部 -->
     <div class="bgBottom">
     <div class="bottomBox">
         <div class="w bottom">
@@ -469,46 +454,6 @@
 
     </div>
 </div>
-
-<script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?866318027a350c7c8dddf0359b3a65d3";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
 </body>
-<script>
-$(function(){
-    $('.wx').mouseenter(function(){
-        $('.qrwx').css({'display':'block'})
-        $('.qrwb').css({'display':'none'})
-        $('.wx').css('background-image','url(/static/home/images/wx_1.png)');
-        $('.bo').css('background-image','url(/static/home/images/bo_0.png)');
-    })
-    $('.qrwx > img').click(function(){
-        $('.qrwx').css({'display':'none'})
-        $('.wx').css('background-image','url(/static/home/images/wx_0.png)');
-    })
-
-    $('.bo').mouseenter(function(){
-        $('.qrwb').css({'display':'block'})
-        $('.qrwx').css({'display':'none'})
-        $('.bo').css('background-image','url(/static/home/images/bo_1.png)');
-        $('.wx').css('background-image','url(/static/home/images/wx_0.png)');
-    })
-    $('.qrwb > img').click(function(){
-        $('.qrwb').css({'display':'none'})
-        $('.bo').css('background-image','url(/static/home/images/bo_0.png)');
-    })
-
-
-})
-    
-
-</script>
 
 </html>

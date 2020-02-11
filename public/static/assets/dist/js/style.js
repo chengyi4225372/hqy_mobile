@@ -673,7 +673,6 @@ var admin_module = (function (){
         var pic = $('#pic_curr').val();
         var pic4 = $('#pic_curr4').val();
         var url = $('#url').val();
-        var mobile_url = $('#mobile_url').val();
         var desc = $('#desc').val();
         var desc2 = $('#desc2').val();
         var desc3 = $('#desc3').val();
@@ -710,11 +709,7 @@ var admin_module = (function (){
 
         if(url == '' || url == undefined || url == 'undefined'){
             $('#url').focus();
-            layer.tips('请填写PC端的跳转URL!','#url',{tips:[1,'#c00']});return;
-        }
-        if(mobile_url == '' || mobile_url == undefined){
-            $('#mobile_url').focus();
-            layer.tips('请填写手机端的URL!','#url',{tips:[1,'#c00']});return;
+            layer.tips('请填写URL!','#url',{tips:[1,'#c00']});return;
         }
         if(desc == '' || desc == undefined || desc == 'undefined'){
             $('#desc').focus();
@@ -731,7 +726,6 @@ var admin_module = (function (){
         obj.pic = pic;
         obj.pic4 = pic4;
         obj.url = url;
-        obj.mobile_url = mobile_url;
         obj.desc = desc;
         obj.desc2 = desc2;
         obj.desc3 = desc3;
@@ -780,7 +774,6 @@ var admin_module = (function (){
         var pic = $('#pic_curr').val();
         var pic4 = $('#pic_curr4').val();
         var url = $('#url').val();
-        var mobile_url = $('#mobile_url').val();
         var desc = $('#desc').val();
         var desc2 = $('#desc2').val();
         var desc3 = $('#desc3').val();
@@ -820,12 +813,6 @@ var admin_module = (function (){
             $('#url').focus();
             layer.tips('请填写URL!','#url',{tips:[1,'#c00']});return;
         }
-
-        if(mobile_url == '' || mobile_url == undefined){
-            $('#mobile_url').focus();
-            layer.tips('请填写URL!','#mobile_url',{tips:[1,'#c00']});return;
-        }
-
         if(desc == '' || desc == undefined || desc == 'undefined'){
             $('#desc').focus();
             layer.tips('描述不能为空!','#desc',{tips:[1,'#c00']});return;
@@ -843,7 +830,6 @@ var admin_module = (function (){
         obj.pic = pic;
         obj.pic4 = pic4;
         obj.url = url;
-        obj.mobile_url = mobile_url;
         obj.desc = desc;
         obj.desc2 = desc2;
         obj.desc3 = desc3;

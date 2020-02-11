@@ -197,11 +197,11 @@ class Infosservice
             $page = 10;
         }
 
-        $arr = Info::instance()->where($array)->order('release_time desc')->paginate($page);
+        $arr = Info::instance()->where($array)->order('id desc,release_time desc')->paginate($page);
 
         foreach ($arr as $k => $val) {
             $arr[$k]['keyword'] = explode(',', $arr[$k]['keyword']);
-            $arr[$k]['title'] = mb_substr($arr[$k]['title'], 0, 30, 'utf-8');
+            $arr[$k]['title'] = mb_substr($arr[$k]['title'], 0, 30, 'utf-8').'...';
         }
 
         return $arr;
@@ -275,8 +275,8 @@ class Infosservice
              $array['pid'] = 1;
              $array['keyword'] = ['like',$arr_w,'OR'];
          }
-         $arr = Info::instance()->where($array)->order('release_time desc')->count();
-
+         $arr = Info::instance()->where($array)->order('id desc,release_time desc')->count();
+         
          return $arr?$arr:'';
      }
 
@@ -309,7 +309,7 @@ class Infosservice
 
         foreach ($arr as $k => $val) {
             $arr[$k]['keyword'] = explode(',', $arr[$k]['keyword']);
-            $arr[$k]['title'] = mb_substr($arr[$k]['title'], 0, 30, 'utf-8');
+            $arr[$k]['title'] = mb_substr($arr[$k]['title'], 0, 30, 'utf-8').'...';
         }
 
         return $arr ? $arr : '';
@@ -418,7 +418,7 @@ class Infosservice
 
         foreach ($arr as $k => $val) {
             $arr[$k]['keyword'] = explode(',', $arr[$k]['keyword']);
-            $arr[$k]['title'] = mb_substr($arr[$k]['title'], '0', '30', 'utf-8');
+            $arr[$k]['title'] = mb_substr($arr[$k]['title'], '0', '30', 'utf-8').'...';
         }
 
         return $arr ? $arr : '';
@@ -492,7 +492,7 @@ class Infosservice
             $array['pid'] = 2;
             $array['keyword'] = ['like',$arr_w,'OR'];
         }
-        $arr = Info::instance()->where($array)->order('release_time desc')->count();
+        $arr = Info::instance()->where($array)->order('id desc,release_time desc')->count();
 
         return $arr?$arr:'';
     }
@@ -522,21 +522,12 @@ class Infosservice
             return false;
         }
         $where = [
-            'id' =>$id,
+            'id' => ['GT', $id],
             'status' => 1,
             'auditing' => 1,
         ];
         if(!empty($pid)) $where['pid'] = $pid;
-        $infos = Info::instance()->where($where)->find(); //查询当前新闻添加时间
-
-        $w = [
-            'status'=>1,
-            'auditing' => 1,
-            'pid'=>$pid,
-            'release_time'=>['GT',$infos['release_time']],
-        ];
-
-        $info  = Info::instance()->where($w)->order('release_time asc')->find();
+        $info = Info::instance()->where($where)->order('id asc,release_time asc')->find();
         if (empty($info)) {
             return $info = '';
         } else {
@@ -557,23 +548,13 @@ class Infosservice
         }
 
         $where = [
-            'id' =>$id,
+            'id' => ['LT', $id],
             'status' => 1,
             'auditing' => 1,
         ];
         if(!empty($pid)) $where['pid'] = $pid;
+        $info = Info::instance()->where($where)->order('id desc,release_time desc')->find();
 
-        $infos = Info::instance()->where($where)->find();
-
-        $w = [
-            'status'=>1,
-            'auditing' => 1,
-            'pid'=>$pid,
-            'release_time'=>['LT',$infos['release_time']],
-        ];
-
-
-        $info  = Info::instance()->where($w)->order('release_time desc')->find();
         if (empty($info)) {
             return $info = '';
         } else {

@@ -67,7 +67,6 @@ function upload_file() {
 //添加
 $('.adds').click(function(){
     var purl   =  $("#purl").val();
-    var mobile_url   =  $("#mobile_url").val();
     var names  = $("#names").val();
     var desc   = $("#desc").val();
     var imgs    = $('#Images').val();
@@ -78,11 +77,6 @@ $('.adds').click(function(){
     if(purl == '' || purl==undefined){
         layer.msg('请输入连接地址');
         return ;
-    }
-
-    if(mobile_url == '' || mobile_url == undefined){
-        $('#mobile_url').focus();
-        layer.msg('请输入手机端跳转链接');return;
     }
 
     if(names =='' || names == undefined){
@@ -100,7 +94,7 @@ $('.adds').click(function(){
         return ;
     }
 
-    $.post(url,{'purl':purl,'names':names,'desc':desc,'imgs':imgs,'status':status,'mobile_url':mobile_url},function(ret){
+    $.post(url,{'purl':purl,'names':names,'desc':desc,'imgs':imgs,'status':status},function(ret){
           if(ret.code == 200){
               layer.msg(ret.msg,function(){
                   parent.location.href = "index";
@@ -135,7 +129,6 @@ $('.edit-protuct').click(function(){
 
 $('.edits').click(function(){
     var purl   = $("#purl").val();
-    var mobile_url   =  $("#mobile_url").val();
     var names  = $("#names").val();
     var desc   = $("#desc").val();
     var imgs   = $('#Images').val();
@@ -145,11 +138,6 @@ $('.edits').click(function(){
     if(purl == '' || purl==undefined){
         layer.msg('请输入连接地址');
         return ;
-    }
-
-    if(mobile_url == '' || mobile_url == undefined){
-        $('#mobile_url').focus();
-        layer.msg('请输入手机端跳转链接');return;
     }
 
     if(names =='' || names == undefined){
@@ -174,7 +162,7 @@ $('.edits').click(function(){
         return ;
     }
 
-    $.post(url,{'purl':purl,'names':names,'desc':desc,'imgs':imgs,'status':status,'id':pid,'mobile_url':mobile_url},function(ret){
+    $.post(url,{'purl':purl,'names':names,'desc':desc,'imgs':imgs,'status':status,'id':pid},function(ret){
         if(ret.code == 200){
             layer.msg(ret.msg,function(){
                 parent.location.href = "index";

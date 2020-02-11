@@ -1,0 +1,12 @@
+---------------------------------------------------------------
+[ 2020-01-19T15:23:06+08:00 ] 127.0.0.1 GET /mobile/Apiport/getmorebiao?page=1&title=
+[ error ] [2]date() expects parameter 2 to be long, string given
+---------------------------------------------------------------
+[ 2020-01-19T15:23:10+08:00 ] 127.0.0.1 GET /mobile/Apiport/getmorebiao?page=1&title=
+[ error ] [2]date() expects parameter 2 to be long, string given
+---------------------------------------------------------------
+[ 2020-01-19T15:23:36+08:00 ] 127.0.0.1 GET /mobile/Apiport/getmorebiao?page=1&title=
+[ error ] [2]date() expects parameter 2 to be long, string given
+---------------------------------------------------------------
+[ 2020-01-19T15:23:52+08:00 ] 127.0.0.1 GET /mobile/Apiport/getmorebiao?page=1&title=
+[ error ] [8]A non well formed numeric value encountered

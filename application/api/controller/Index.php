@@ -1,167 +1,182 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2020/1/3
- * Time: 9:06
- */
-namespace  app\api\controller;
+namespace app\api\controller;
 
-use Think\Controller;
-use app\v1\service\Infosservice;
-class Index extends Controller{
+
+use think\Controller;
+use app\api\controller\Apis;
+use app\v1\service\Exampleservice;
+use app\v1\service\Workservice;
+use app\v1\service\Keywordsservice;
+use app\v1\service\Totalsservice;
+
+class Index extends Apis{
 
     /**
-     * 招标信息列表
-     *
+     * 客户案例
+     * 测试
      */
-    public function apibiaolist(){
+    public function customerlist(){
         if($this->request->isPost()){
-            $array=[
-                'status' => 1,
-                'auditing' =>1,
-                'pid' =>1,
-            ];
+            $page = input('post.page','','int');
+            $size = input('post.size','','int');
+            $list = Exampleservice::instance()->getcustmoerlist($page,$size);
 
-            $list = Infosservice::instance()->where($array)->order('id desc,release_time desc')->select();
             if(!empty($list) || isset($list)){
-                return json(['code'=>2000,'msg'=>'success','data'=>$list]);
-            }else {
-                return json(['code'=>4000,'msg'=>'error','data'=>'当前请求数据不存在']);
+                $this->jsonMsg(200,'success',$list);
+            }
+
+            if(empty($list) || !isset($list)){
+                $this->jsonMsg(400,'数据为空！');
             }
         }
         return false;
     }
 
-    /**招标详情
-     * @id int|string
+    /**
+     * 案例详情
+     * 测试
      */
-    public function apibiaogetinfo(){
+    public function customergetinfo(){
+         if($this->request->isPost()){
+             $id = input('post.id','','int');
+
+             if(empty($id) || !isset($id) || is_null($id)||$id <=0){
+               $this->jsonMsg(403,'数据请求不合法');
+             }
+
+             $info = Exampleservice::instance()->getcustmoerbyid($id);
+
+             if(empty($info) || !isset($info)){
+                 $this->jsonMsg(['code'=>400,'msg'=>'请求数据为空','data'=>null]);
+             }
+
+             $this->jsonMsg(200,'success',$info);
+         }
+         return false;
+    }
+
+    /**
+     * 新闻资讯列表页
+     * @title 搜索关键字
+     * @page  当前页数
+     * @size  每页显示条数
+     */
+    public function newslist(){
         if($this->request->isPost()){
+             $title = input('post.title','','trim');
+             $page  = input('post.page','','int');
+             $size  = input('post.size','','int');
 
-            $id =  input('post.id','','trim');
 
-            if(empty($id) || !isset($id)||$id <=0){
-                return json(['code'=>4003,'msg'=>'传递数据不合法!']);
-            }
+             $list  = Workservice::instance()->getworklist($title,$page,$size);
+             //总页数
+             $count = Workservice::instance()->getnewslistcount($title,$size);
 
-            $array=[
-                'status' => 1,
-                'auditing' =>1,
-                'pid' =>1,
-                'id'=>$id,
-             ];
+             if(empty($list) || !isset($list)){
+                 $this->jsonMsg(400,'请求数据为空');
+             }
 
-            $info = Infosservice::instance()->where($array)->order('id desc,release_time desc')->find();
-
-            if(!empty($info) || !isset($info)){
-                return json(['code'=>2000,'msg'=>'success','data'=>$info]);
-            }else{
-                return json(['code'=>4004,'msg'=>'error','data'=>'请求数据不存在']);
-            }
+            $this->jsonMsg(200,'success',$list,$count);
         }
         return false;
     }
 
-   /**
-    * 招商政策
-    */
-    public function apishanglist(){
-       if($this->request->isPost()){
-               $array=[
-                   'status' => 1,
-                   'auditing' =>1,
-                   'pid' =>2,
-               ];
+    /** 获取新闻详情**/
+    public function getnewsinfo(){
+        if($this->request->isPost()){
+           $id = input('post.id','','int');
 
-               $list = Infosservice::instance()->where($array)->order('id desc,release_time desc')->select();
-               if(!empty($list) || isset($list)){
-                   return json(['code'=>2000,'msg'=>'success','data'=>$list]);
-               }else {
-                   return json(['code'=>4000,'msg'=>'error','data'=>'当前请求数据不存在']);
-               }
-           }
-       return false;
-   }
-
-   /**
-    * 招商信息详情
-    * @id int|string
-    */
-    public function apishanggetinfo(){
-       if($this->request->isPost()){
-           $id =  input('post.id','','trim');
-
-           if(empty($id) || !isset($id)||$id <=0){
-               return json(['code'=>4003,'msg'=>'传递数据不合法!']);
+           if(empty($id) || !isset($id) || is_null($id) || $id <= 0){
+               $this->jsonMsg(403,'数据类型不合法！');
            }
 
-           $array=[
-               'status' => 1,
-               'auditing' =>1,
-               'pid' =>2,
-               'id'=>$id,
-           ];
+           $info = Workservice::instance()->getidbyinfo($id);
 
-           $info = Infosservice::instance()->where($array)->order('id desc,release_time desc')->find();
+           $info['top'] = Workservice::instance()->gettopapi($id);//上一篇
 
-           if(!empty($info) || !isset($info)){
-               return json(['code'=>2000,'msg'=>'success','data'=>$info]);
-           }else{
-               return json(['code'=>4004,'msg'=>'error','data'=>'请求数据不存在']);
-           }
-       }
-       return false;
-   }
+           $info['next'] = Workservice::instance()->getnextapi($id);//下一篇
 
-   /**
-    *行业资讯
-   */
-    public function apiindustrylist(){
-       if($this->request->isPost()){
-           $array=[
-               'status' => 1,
-               'auditing' =>1,
-               'pid' =>3,
-           ];
-
-           $list = Infosservice::instance()->where($array)->order('id desc,release_time desc')->select();
-           if(!empty($list) || isset($list)){
-               return json(['code'=>2000,'msg'=>'success','data'=>$list]);
-           }else {
-               return json(['code'=>4000,'msg'=>'error','data'=>'当前请求数据不存在']);
-           }
-       }
-       return false;
-   }
-
-   /**
-    * 行业资讯详情
-    * @id string|int
-    */
-    public function apiindustrygetinfo(){
-       if($this->request->isPost()){
-           $id =  input('post.id','','trim');
-
-           if(empty($id) || !isset($id)||$id <=0){
-               return json(['code'=>4003,'msg'=>'传递数据不合法!']);
+           if(empty($info) || !isset($info)){
+               $this->jsonMsg(400,'数据为空');
            }
 
-           $array=[
-               'status' => 1,
-               'auditing' =>1,
-               'pid' =>3,
-               'id'=>$id,
-           ];
+           $this->jsonMsg(200,'success',$info);
+        }
+        return false;
+    }
 
-           $info = Infosservice::instance()->where($array)->order('id desc,release_time desc')->find();
+    /**
+     * 热门关键字列表
+     */
+    public function getkeywordlist(){
+        if($this->request->isPost()){
+             $list = keywordsservice::instance()->getkeywordlist();
 
-           if(!empty($info) || !isset($info)){
-               return json(['code'=>2000,'msg'=>'success','data'=>$info]);
-           }else{
-               return json(['code'=>4004,'msg'=>'error','data'=>'请求数据不存在']);
+             if(empty($list) || !isset($list)){
+                 $this->jsonMsg(400,'请求数据为空');
+             }
+
+            $this->jsonMsg(200,'success',$list);
+        }
+
+        return false;
+    }
+
+    /**
+     * 行业资讯最新的三条
+     */
+    public function hnewthree(){
+        if($this->request->isPost()){
+           $list = Workservice::instance()->getnewthree();
+
+           if(empty($list) || !isset($list)){
+               $this->jsonMsg(400,'数据为空');
            }
-       }
-       return false;
-   }
+
+           $this->jsonMsg(200,'success',$list);
+        }
+    }
+
+    /**
+     * 统计人数
+     */
+    public function totalpeople(){
+        if($this->request->isPost()){
+            $id = input('post.id','','int');
+
+            if(empty($id) || !isset($id) || is_null($id) || $id<=0){
+                $this->jsonMsg(403,'请求数据不合法','');
+            }
+
+            $ret = Totalsservice::instance()->counts($id);
+
+            if(!empty($ret) || isset($ret)){
+                $this->jsonMsg(200,'success',$ret);
+            }else {
+                $this->jsonMsg(400,'请求数据为空',$ret);
+            }
+        }
+    }
+
+    /**
+     * 增加在线报名人数
+     * @id
+     */
+     public function  addpeople(){
+         if($this->request->isPost()){
+             $id = input('post.id','','int');
+
+             if(empty($id) || !isset($id) || is_null($id) || $id<=0){
+                 $this->jsonMsg(403,'请求数据不合法','');
+             }
+
+             $ret =  Totalsservice::instance()->humansetadd($id);
+
+             if(empty($ret) || !isset($ret) || is_null($ret)){
+                 $this->jsonMsg(400,'请求数据为空','');
+             }else{
+                 $this->jsonMsg(200,'success',$ret);
+             }
+         }
+     }
 }

@@ -1,21 +1,24 @@
 ---------------------------------------------------------------
-[ 2020-01-14T09:29:59+08:00 ] 172.26.2.111 POST /v1/systematic/cases/editcase.html
-[ error ] [8]未定义数组索引: mobile_url[/opt/web/hqy_/application/v1/service/Caseservice.php:157]
+[ 2020-01-14T16:50:24+08:00 ] 127.0.0.1 GET /mobile/Apiport/getfamily
+[ error ] [1]Uncaught exception 'think\exception\TemplateNotFoundException' with message 'template not exists:/var/www/hqy_mobile/public/../application/404.html' in /var/www/hqy_mobile/thinkphp/library/think/view/driver/Think.php:82
+Stack trace:
+#0 /var/www/hqy_mobile/thinkphp/library/think/View.php(163): think\view\driver\Think->fetch('/var/www/hqy_mo...', Array, Array)
+#1 /var/www/hqy_mobile/thinkphp/library/think/response/View.php(36): think\View->fetch('/var/www/hqy_mo...', Array, Array)
+#2 /var/www/hqy_mobile/thinkphp/library/think/Response.php(309): think\response\View->output('/var/www/hqy_mo...')
+#3 /var/www/hqy_mobile/thinkphp/library/think/Response.php(94): think\Response->getContent()
+#4 /var/www/hqy_mobile/thinkphp/library/think/Error.php(52): think\Response->send()
+#5 [internal function]: think\Error::appException(Object(think\exception\HttpException))
+#6 {main}
+  thrown
 ---------------------------------------------------------------
-[ 2020-01-14T09:30:26+08:00 ] 172.26.2.111 POST /v1/systematic/cases/editcase.html
-[ error ] [8]未定义数组索引: mobile_url[/opt/web/hqy_/application/v1/service/Caseservice.php:157]
----------------------------------------------------------------
-[ 2020-01-14T09:38:20+08:00 ] 172.26.2.111 POST /v1/systematic/system/uploadimg.html
-[ error ] [2]mkdir(): File exists[/opt/web/hqy_/application/v1/service/Systems.php:360]
----------------------------------------------------------------
-[ 2020-01-14T09:38:22+08:00 ] 172.26.2.111 POST /v1/systematic/system/uploadimg.html
-[ error ] [2]mkdir(): File exists[/opt/web/hqy_/application/v1/service/Systems.php:360]
----------------------------------------------------------------
-[ 2020-01-14T09:39:23+08:00 ] 172.26.2.111 POST /v1/systematic/system/uploadimg.html
-[ error ] [2]mkdir(): File exists[/opt/web/hqy_/application/v1/service/Systems.php:360]
----------------------------------------------------------------
-[ 2020-01-14T09:39:26+08:00 ] 172.26.2.111 POST /v1/systematic/system/uploadimg.html
-[ error ] [2]mkdir(): File exists[/opt/web/hqy_/application/v1/service/Systems.php:360]
----------------------------------------------------------------
-[ 2020-01-14T10:36:35+08:00 ] 172.26.2.111 GET /v1/protuct/protucts/edit.html?id=10
-[ error ] [0]类的属性不存在:app\common\model\Protuct->mobile_url[/opt/web/hqy_/thinkphp/library/think/Model.php:624]
+[ 2020-01-14T16:50:24+08:00 ] 127.0.0.1 GET /mobile/Apiport/getproduct
+[ error ] [1]Uncaught exception 'think\exception\TemplateNotFoundException' with message 'template not exists:/var/www/hqy_mobile/public/../application/404.html' in /var/www/hqy_mobile/thinkphp/library/think/view/driver/Think.php:82
+Stack trace:
+#0 /var/www/hqy_mobile/thinkphp/library/think/View.php(163): think\view\driver\Think->fetch('/var/www/hqy_mo...', Array, Array)
+#1 /var/www/hqy_mobile/thinkphp/library/think/response/View.php(36): think\View->fetch('/var/www/hqy_mo...', Array, Array)
+#2 /var/www/hqy_mobile/thinkphp/library/think/Response.php(309): think\response\View->output('/var/www/hqy_mo...')
+#3 /var/www/hqy_mobile/thinkphp/library/think/Response.php(94): think\Response->getContent()
+#4 /var/www/hqy_mobile/thinkphp/library/think/Error.php(52): think\Response->send()
+#5 [internal function]: think\Error::appException(Object(think\exception\HttpException))
+#6 {main}
+  thrown

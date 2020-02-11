@@ -1,0 +1,90 @@
+---------------------------------------------------------------
+[ 2020-01-16T15:28:09+08:00 ] 127.0.0.1 GET /static/home/images/wxCode.png
+[ error ] [1]Uncaught exception 'think\exception\TemplateNotFoundException' with message 'template not exists:/var/www/hqy_mobile/public/../application/404.html' in /var/www/hqy_mobile/thinkphp/library/think/view/driver/Think.php:82
+Stack trace:
+#0 /var/www/hqy_mobile/thinkphp/library/think/View.php(163): think\view\driver\Think->fetch('/var/www/hqy_mo...', Array, Array)
+#1 /var/www/hqy_mobile/thinkphp/library/think/response/View.php(36): think\View->fetch('/var/www/hqy_mo...', Array, Array)
+#2 /var/www/hqy_mobile/thinkphp/library/think/Response.php(309): think\response\View->output('/var/www/hqy_mo...')
+#3 /var/www/hqy_mobile/thinkphp/library/think/Response.php(94): think\Response->getContent()
+#4 /var/www/hqy_mobile/thinkphp/library/think/Error.php(52): think\Response->send()
+#5 [internal function]: think\Error::appException(Object(think\exception\HttpException))
+#6 {main}
+  thrown
+---------------------------------------------------------------
+[ 2020-01-16T15:28:09+08:00 ] 127.0.0.1 GET /static/home/images/close2.png
+[ error ] [1]Uncaught exception 'think\exception\TemplateNotFoundException' with message 'template not exists:/var/www/hqy_mobile/public/../application/404.html' in /var/www/hqy_mobile/thinkphp/library/think/view/driver/Think.php:82
+Stack trace:
+#0 /var/www/hqy_mobile/thinkphp/library/think/View.php(163): think\view\driver\Think->fetch('/var/www/hqy_mo...', Array, Array)
+#1 /var/www/hqy_mobile/thinkphp/library/think/response/View.php(36): think\View->fetch('/var/www/hqy_mo...', Array, Array)
+#2 /var/www/hqy_mobile/thinkphp/library/think/Response.php(309): think\response\View->output('/var/www/hqy_mo...')
+#3 /var/www/hqy_mobile/thinkphp/library/think/Response.php(94): think\Response->getContent()
+#4 /var/www/hqy_mobile/thinkphp/library/think/Error.php(52): think\Response->send()
+#5 [internal function]: think\Error::appException(Object(think\exception\HttpException))
+#6 {main}
+  thrown
+---------------------------------------------------------------
+[ 2020-01-16T15:28:09+08:00 ] 127.0.0.1 GET /static/home/images/wbCode.png
+[ error ] [1]Uncaught exception 'think\exception\TemplateNotFoundException' with message 'template not exists:/var/www/hqy_mobile/public/../application/404.html' in /var/www/hqy_mobile/thinkphp/library/think/view/driver/Think.php:82
+Stack trace:
+#0 /var/www/hqy_mobile/thinkphp/library/think/View.php(163): think\view\driver\Think->fetch('/var/www/hqy_mo...', Array, Array)
+#1 /var/www/hqy_mobile/thinkphp/library/think/response/View.php(36): think\View->fetch('/var/www/hqy_mo...', Array, Array)
+#2 /var/www/hqy_mobile/thinkphp/library/think/Response.php(309): think\response\View->output('/var/www/hqy_mo...')
+#3 /var/www/hqy_mobile/thinkphp/library/think/Response.php(94): think\Response->getContent()
+#4 /var/www/hqy_mobile/thinkphp/library/think/Error.php(52): think\Response->send()
+#5 [internal function]: think\Error::appException(Object(think\exception\HttpException))
+#6 {main}
+  thrown
+---------------------------------------------------------------
+[ 2020-01-16T15:28:09+08:00 ] 127.0.0.1 GET /static/home/images/close2.png
+[ error ] [1]Uncaught exception 'think\exception\TemplateNotFoundException' with message 'template not exists:/var/www/hqy_mobile/public/../application/404.html' in /var/www/hqy_mobile/thinkphp/library/think/view/driver/Think.php:82
+Stack trace:
+#0 /var/www/hqy_mobile/thinkphp/library/think/View.php(163): think\view\driver\Think->fetch('/var/www/hqy_mo...', Array, Array)
+#1 /var/www/hqy_mobile/thinkphp/library/think/response/View.php(36): think\View->fetch('/var/www/hqy_mo...', Array, Array)
+#2 /var/www/hqy_mobile/thinkphp/library/think/Response.php(309): think\response\View->output('/var/www/hqy_mo...')
+#3 /var/www/hqy_mobile/thinkphp/library/think/Response.php(94): think\Response->getContent()
+#4 /var/www/hqy_mobile/thinkphp/library/think/Error.php(52): think\Response->send()
+#5 [internal function]: think\Error::appException(Object(think\exception\HttpException))
+#6 {main}
+  thrown
+---------------------------------------------------------------
+[ 2020-01-16T15:28:09+08:00 ] 127.0.0.1 GET /uploads/images/2019121814/1-banner-%E3%80%90%E5%88%87%E5%9B%BE%E3%80%91_06.png
+[ error ] [1]Uncaught exception 'think\exception\TemplateNotFoundException' with message 'template not exists:/var/www/hqy_mobile/public/../application/404.html' in /var/www/hqy_mobile/thinkphp/library/think/view/driver/Think.php:82
+Stack trace:
+#0 /var/www/hqy_mobile/thinkphp/library/think/View.php(163): think\view\driver\Think->fetch('/var/www/hqy_mo...', Array, Array)
+#1 /var/www/hqy_mobile/thinkphp/library/think/response/View.php(36): think\View->fetch('/var/www/hqy_mo...', Array, Array)
+#2 /var/www/hqy_mobile/thinkphp/library/think/Response.php(309): think\response\View->output('/var/www/hqy_mo...')
+#3 /var/www/hqy_mobile/thinkphp/library/think/Response.php(94): think\Response->getContent()
+#4 /var/www/hqy_mobile/thinkphp/library/think/Error.php(52): think\Response->send()
+#5 [internal function]: think\Error::appException(Object(think\exception\HttpException))
+#6 {main}
+  thrown
+---------------------------------------------------------------
+[ 2020-01-16T16:30:48+08:00 ] 127.0.0.1 POST /api/index/getkeywordlist
+[ error ] [1]Class 'app\v1\service\Keywordsservice' not found
+---------------------------------------------------------------
+[ 2020-01-16T16:37:20+08:00 ] 127.0.0.1 POST /api/index/getkeywordlist
+[ error ] [1]Class 'app\v1\service\Keywordsservice' not found
+---------------------------------------------------------------
+[ 2020-01-16T16:39:57+08:00 ] 127.0.0.1 POST /api/index/getkeywordlist
+[ error ] [1]Class 'app\v1\service\Keywordsservice' not found
+---------------------------------------------------------------
+[ 2020-01-16T16:40:06+08:00 ] 127.0.0.1 POST /api/index/getkeywordlist
+[ error ] [1]Class 'app\v1\service\Keywordsservice' not found
+---------------------------------------------------------------
+[ 2020-01-16T16:40:14+08:00 ] 127.0.0.1 POST /api/index/getkeywordlist
+[ error ] [1]Class 'app\v1\service\Keywordsservice' not found
+---------------------------------------------------------------
+[ 2020-01-16T16:40:28+08:00 ] 127.0.0.1 POST /api/index/getkeywordlist
+[ error ] [1]Class 'app\v1\service\Keywordsservice' not found
+---------------------------------------------------------------
+[ 2020-01-16T16:40:32+08:00 ] 127.0.0.1 POST /api/index/getkeywordlist
+[ error ] [1]Class 'app\v1\service\Keywordsservice' not found
+---------------------------------------------------------------
+[ 2020-01-16T16:40:57+08:00 ] 127.0.0.1 POST /api/index/getkeywordlist
+[ error ] [1]Class 'app\v1\service\Keywordsservice' not found
+---------------------------------------------------------------
+[ 2020-01-16T16:41:48+08:00 ] 127.0.0.1 POST /api/index/getkeywordlist
+[ error ] [1]Class 'app\v1\service\Keywordsservice' not found
+---------------------------------------------------------------
+[ 2020-01-16T18:35:59+08:00 ] 127.0.0.1 GET /mobile/Apiport/getbaioinfo?id=37727&pid=1&title=&keyword=%E6%94%BF%E5%BA%9C%E6%8A%95%E8%B5%84
+[ error ] [8]未定义变量: wh
