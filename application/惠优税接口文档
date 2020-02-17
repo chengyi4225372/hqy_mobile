@@ -1,0 +1,42 @@
+
+客户案例接口：
+请求方式 post
+传递参数 ：
+authorization 
+page 当前页
+size 每页条数 （默认是8 条）
+url： 域名/apis/Taxation/customerlistapi 
+
+
+
+客户案例详情接口：
+请求方式：post
+传递参数：
+authorization 
+id
+url: 域名/apis/Taxation/getcustomerinfo 
+
+
+新闻资讯列表接口：
+请求方式：post
+传递参数：
+authorization 
+page 当前页
+size 每页条数
+keywords 搜索关键字（传递数组逗号分隔）
+urls: 域名/apis/Taxation/newslistapi  
+
+
+新闻资讯详情接口：
+请求方式：post 
+传递参数：
+authorization 
+id
+url:域名/apis/Taxation/getnewsinfo
+
+关键字接口：
+请求方式：post
+传递参数：
+authorization 
+url: 域名/apis/Taxation/getkeywordlist
+
