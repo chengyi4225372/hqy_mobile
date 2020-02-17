@@ -354,9 +354,9 @@ class Taxationservice
         if(empty($count) || !isset($count) || is_null($count)|| $count<=0){
              $total =0;
         }else {
-            $total = $count / $size;
+            $total = ceil($count / $size);
         }
-        
+
         return $total;
     }
 

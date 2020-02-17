@@ -207,7 +207,7 @@ class Customerservice
                  ->where($w)
                  ->count();
 
-       return  $totalpage = $counts / 8;
+       return  $totalpage = ceil($counts / 8);
 
       }
 
