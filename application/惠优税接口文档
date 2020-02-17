@@ -5,7 +5,7 @@
 authorization 
 page 当前页
 size 每页条数 （默认是8 条）
-url： 域名/apis/Taxation/customerlistapi 
+url： 域名/api/Taxation/customerlistapi 
 
 
 
@@ -14,7 +14,7 @@ url： 域名/apis/Taxation/customerlistapi
 传递参数：
 authorization 
 id
-url: 域名/apis/Taxation/getcustomerinfo 
+url: 域名/api/Taxation/getcustomerinfo 
 
 
 新闻资讯列表接口：
@@ -24,7 +24,7 @@ authorization
 page 当前页
 size 每页条数
 keywords 搜索关键字（传递数组逗号分隔）
-urls: 域名/apis/Taxation/newslistapi  
+urls: 域名/api/Taxation/newslistapi  
 
 
 新闻资讯详情接口：
@@ -32,11 +32,11 @@ urls: 域名/apis/Taxation/newslistapi
 传递参数：
 authorization 
 id
-url:域名/apis/Taxation/getnewsinfo
+url:域名/api/Taxation/getnewsinfo
 
 关键字接口：
 请求方式：post
 传递参数：
 authorization 
-url: 域名/apis/Taxation/getkeywordlist
+url: 域名/api/Taxation/getkeywordlist
 
