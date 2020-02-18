@@ -6,6 +6,7 @@
  * Time: 9:12
  */
 namespace app\mobile\service;
+use app\common\model\HysStatistics;
 use app\common\model\Protuct;
 use app\common\model\Info;
 use app\common\model\Cases;
@@ -482,6 +483,8 @@ class Apiservice
         return true;
     }
 
+
+
     /**
      * @DESC：查询有多少报名人数
      * @author: jason
@@ -491,6 +494,37 @@ class Apiservice
     {
         $where['status'] = 1;
         $reeturn_data = Statistics::instance()->where($where)->find();
+        return $reeturn_data;
+    }
+
+    /**
+     * @DESC:惠优税的报名人数统计
+     * @author: jason
+     * @date: 2020-02-18 02:43:47
+     * @return bool
+     */
+    public function hysstatistics()
+    {
+        $totals = Config::get('site.hys_total');
+        $where = [];
+        $where['status'] = 1;
+        $res = HysStatistics::instance()->where($where)->setInc('totals',$totals);
+        if($res === false){
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * @DESC:统计惠优税的报名人数
+     * @author: jason
+     * @date: 2020-02-18 02:48:27
+     * @return mixed
+     */
+    public function getHysCount()
+    {
+        $where['status'] = 1;
+        $reeturn_data = HysStatistics::instance()->where($where)->find();
         return $reeturn_data;
     }
 }
