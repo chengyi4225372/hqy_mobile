@@ -271,8 +271,9 @@ class Taxationservice
      * @page
      * @size
      * @keywords
+     * @title
      */
-    public function getnewslistapi($page,$size,$keywords){
+    public function getnewslistapi($page,$size,$keywords,$title){
           
         if(empty($size) || !isset($size) ||is_null($size) || $size <=0){
             $size =8;
@@ -284,7 +285,7 @@ class Taxationservice
            $page = ($page -1) * $size;
         }
         
-        if(empty($keywords) || !isset($keywords)){
+        if(empty($keywords) || !isset($keywords) && empty($title) && !isset($title) ){
             $w = [
                 'status'=>1,
             ];
@@ -300,11 +301,14 @@ class Taxationservice
 
             $w = [
                  'status'=>1,
-                 'title|keywords'=>['like',$arr_w,'OR'],
+                 'keywords'=>['like',$arr_w,'OR'],
+                 'title'=>['like','%'.$title.'%'],
                 ];
         } 
 
-        $list = Taxation::instance()->where($w)->order('create_time desc')
+        $list = Taxation::instance()->where($w)
+                ->field('id,title,description,keywords,imgs,create_time as time')
+                ->order('create_time desc')
                 ->limit($page,$size)->select();
 
          if(empty($list)|| !isset($list)){
@@ -313,6 +317,7 @@ class Taxationservice
          
          foreach($list as $k =>$val){
              $list[$k]['imgs'] = config('curl.hys').$list[$k]['imgs'];
+             $list[$k]['time'] = date('Y-m-d',strtotime($list[$k]['time']));
          }
          
          return $list;
@@ -323,13 +328,14 @@ class Taxationservice
      * 获取总页数
      * @keywords 搜索关键字
      * @size  条数
+     * @title 标题
      */
-    public function gettotalpages($keywords,$size){
+    public function gettotalpages($keywords,$size,$title){
         if(empty($size) || !isset($size) ||is_null($size) || $size <=0){
             $size =8;
         } 
 
-        if(empty($keywords) || !isset($keywords)){
+        if(empty($keywords) || !isset($keywords) && empty($title) && ！isset($title)){
             $w = [
                 'status'=>1,
             ];
@@ -345,7 +351,8 @@ class Taxationservice
 
             $w = [
                  'status'=>1,
-                 'title|keywords'=>['like',$arr_w,'OR'],
+                 'keywords'=>['like',$arr_w,'OR'],
+                 'title'=>['like','%'.$title.'%'],
                 ];
         } 
 
@@ -362,28 +369,30 @@ class Taxationservice
 
     /**
      * 获取新闻详情
-     * @id
+     * @mid
      */
-    public function getidinfoapi($id){
-       if(empty($id)||!isset($id)||is_null($id)|| $id<=0){
+    public function getidinfoapi($mid){
+       if(empty($mid)||!isset($mid)||is_null($mid)|| $mid<=0){
            return false;
        }
-       
+
+
        $w  = [
            'status'=>1,
-           'id'=>$id,
+           'id'=>$mid,
        ];
-       $info = Taxation::instance()
-               ->field('id,title,skeyword,content,create_time as time')
-               ->where($w)->find(); 
 
+       $info = Taxation::instance()
+               ->field('title,skeyword,keywords,description,content,create_time as time ')
+               ->where($w)->find()->toArray(); 
+       
        if(empty($info)||!isset($info)){
            return $info='';
        }
-       
+
        //上一篇
        $top = Taxation::instance()
-              ->where(['create_time',['GT',$info['time']]])
+              ->where('create_time','GT',$info['time'])
               ->field('id,title')->find();
         if(empty($top)|| !isset($top)){
            $top ='这是第一篇了！';
@@ -391,11 +400,11 @@ class Taxationservice
 
        //下一篇
        $next = Taxation::instance()
-       ->where(['create_time',['LT',$info['time']]])
+       ->where('create_time','LT',$info['time'])
        ->field('id,title')->find();
 
        if(empty($next)|| !isset($next)){
-        $top ='这是最后一篇了！';
+        $next ='这是最后一篇了！';
        } 
         
        $info['top']  = $top;
