@@ -33,4 +33,5 @@ return [
         '新闻资讯' => '新闻资讯',
     ],
     'hqy_total' => 1,
+    'hys_total' => 1,
 ];
