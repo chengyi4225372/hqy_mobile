@@ -222,17 +222,21 @@ class Customerservice
 
          $w = ['status'=>1,'id'=>$id];
 
-         $info = Customer::instance()->where($w)->find();
+         $info = Customer::instance()->where($w)->find()->toArray();
+
 
          if(empty($info)|| !isset($info)){
              return $info ='';
-         }
+         } 
+        
          $info['imgs'] = config('curl.hys').$info['imgs'];
-         $info['create_time'] = date('Y-m-d',$info['create_time']);
+         $info['create_time'] = date('Y-m-d',strtotime($info['create_time']));
+
 
          $url = config('curl.hys');
          $pregRule = "/<[img|IMG].*?src=[\'|\"](.*?(?:[\.jpg|\.jpeg|\.png|\.gif|\.bmp]))[\'|\"].*?[\/]?>/";
          $info['content'] = preg_replace($pregRule, '<img src="' . $url . '${1}">', $info['content']);
-
+         
+         return $info;
       }
 }

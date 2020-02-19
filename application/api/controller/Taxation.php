@@ -66,19 +66,21 @@ class Taxation extends Apis{
    * @page 当前页数
    * @size 每页显示条数
    * @keywords 搜索关键字
+   * @title 标题搜索
    * @countpages 总页数
    */
   public function newslistapi(){
       if($this->request->isPost()){
-        $page = input('post.page','','int');
-        $size = input('post.size','','int');
-        $keywords = input('post.keywords ','','trim');
+        $page     = input('post.page','','int');
+        $size     = input('post.size','','int');
+        $keywords = input('post.keywords','','trim');
+        $title    = input('post.title','','trim');
         
         //获取数据
-        $list = Taxationservice::instance()->getnewslistapi($page,$size,$keywords);
+        $list = Taxationservice::instance()->getnewslistapi($page,$size,$keywords,$title);
        //获取总页数 
-        $countpage = Taxationservice::instance()->gettotalpages($keywords,$size);
-
+        $countpage = Taxationservice::instance()->gettotalpages($keywords,$size,$title);
+         
         if(empty($list)||!isset($list)){
             $this->jsonMsg(400,'请求数据为空！');
         }
@@ -132,6 +134,10 @@ class Taxation extends Apis{
         }
         return false;
     }
+
+
+
+
 
     /**
      * @DESC：惠优税统计报名人数

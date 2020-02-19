@@ -1,0 +1,66 @@
+---------------------------------------------------------------
+[ 2020-02-18T14:40:10+08:00 ] 0.0.0.0 POST /api/taxation/getnewsinfo
+[ error ] [2]Illegal string offset 'time'[/Users/zhanwen/Desktop/hqy_mobile/application/v1/service/Taxationservice.php:386]
+---------------------------------------------------------------
+[ 2020-02-18T14:42:14+08:00 ] 0.0.0.0 POST /api/taxation/getnewsinfo
+[ error ] [2]Illegal string offset 'time'[/Users/zhanwen/Desktop/hqy_mobile/application/v1/service/Taxationservice.php:386]
+---------------------------------------------------------------
+[ 2020-02-18T14:45:56+08:00 ] 0.0.0.0 POST /api/taxation/getnewsinfo
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'keyword' in 'field list'[/Users/zhanwen/Desktop/hqy_mobile/thinkphp/library/think/db/Connection.php:390]
+---------------------------------------------------------------
+[ 2020-02-18T14:46:58+08:00 ] 0.0.0.0 POST /api/taxation/getnewsinfo
+[ error ] [2]Illegal string offset 'time'[/Users/zhanwen/Desktop/hqy_mobile/application/v1/service/Taxationservice.php:387]
+---------------------------------------------------------------
+[ 2020-02-18T14:47:48+08:00 ] 0.0.0.0 POST /api/taxation/getnewsinfo
+[ error ] [8]未定义数组索引: time[/Users/zhanwen/Desktop/hqy_mobile/application/v1/service/Taxationservice.php:387]
+---------------------------------------------------------------
+[ 2020-02-18T14:53:27+08:00 ] 0.0.0.0 POST /api/taxation/getnewsinfo
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= 'create_time'  AND  > '2020-01-06 14:55:08' LIMIT 1' at line 1[/Users/zhanwen/Desktop/hqy_mobile/thinkphp/library/think/db/Connection.php:390]
+---------------------------------------------------------------
+[ 2020-02-18T15:04:07+08:00 ] 0.0.0.0 POST /api/taxation/getnewsinfo
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= 'time'  AND  > 1578293708 LIMIT 1' at line 1[/Users/zhanwen/Desktop/hqy_mobile/thinkphp/library/think/db/Connection.php:390]
+---------------------------------------------------------------
+[ 2020-02-18T15:05:16+08:00 ] 0.0.0.0 POST /api/taxation/getnewsinfo
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= 'time'  AND  > 1578293708 LIMIT 1' at line 1[/Users/zhanwen/Desktop/hqy_mobile/thinkphp/library/think/db/Connection.php:390]
+---------------------------------------------------------------
+[ 2020-02-18T15:05:57+08:00 ] 0.0.0.0 POST /api/taxation/getnewsinfo
+[ error ] [8]未定义数组下标: 0[/Users/zhanwen/Desktop/hqy_mobile/thinkphp/library/think/db/Builder.php:319]
+---------------------------------------------------------------
+[ 2020-02-18T15:07:43+08:00 ] 0.0.0.0 POST /api/taxation/getnewsinfo
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= 'time'  AND  > 1578293708 LIMIT 1' at line 1[/Users/zhanwen/Desktop/hqy_mobile/thinkphp/library/think/db/Connection.php:390]
+---------------------------------------------------------------
+[ 2020-02-18T15:08:20+08:00 ] 0.0.0.0 POST /api/taxation/getnewsinfo
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= 'create_time'  AND  > 1578293708 LIMIT 1' at line 1[/Users/zhanwen/Desktop/hqy_mobile/thinkphp/library/think/db/Connection.php:390]
+---------------------------------------------------------------
+[ 2020-02-18T15:11:30+08:00 ] 0.0.0.0 POST /api/taxation/getcustomerinfo
+[ error ] [8]A non well formed numeric value encountered[/Users/zhanwen/Desktop/hqy_mobile/application/v1/service/Customerservice.php:231]
+---------------------------------------------------------------
+[ 2020-02-18T15:12:21+08:00 ] 0.0.0.0 POST /api/taxation/getcustomerinfo
+[ error ] [8]A non well formed numeric value encountered[/Users/zhanwen/Desktop/hqy_mobile/application/v1/service/Customerservice.php:231]
+---------------------------------------------------------------
+[ 2020-02-18T15:13:24+08:00 ] 0.0.0.0 POST /api/taxation/getcustomerinfo
+[ error ] [8]A non well formed numeric value encountered[/Users/zhanwen/Desktop/hqy_mobile/application/v1/service/Customerservice.php:233]
+---------------------------------------------------------------
+[ 2020-02-18T15:16:48+08:00 ] 0.0.0.0 POST /api/taxation/getcustomerinfo
+[ error ] [8]A non well formed numeric value encountered[/Users/zhanwen/Desktop/hqy_mobile/application/v1/service/Customerservice.php:233]
+---------------------------------------------------------------
+[ 2020-02-18T15:22:27+08:00 ] 0.0.0.0 POST /api/taxation/newslistapi
+[ error ] [8]未定义变量: array[/Users/zhanwen/Desktop/hqy_mobile/thinkphp/library/think/db/Builder.php:385]
+---------------------------------------------------------------
+[ 2020-02-18T15:37:33+08:00 ] 0.0.0.0 POST /api/taxation/newslistapi
+[ error ] [8]未定义变量: title[/Users/zhanwen/Desktop/hqy_mobile/application/v1/service/Taxationservice.php:305]
+---------------------------------------------------------------
+[ 2020-02-18T15:40:13+08:00 ] 0.0.0.0 POST /api/taxation/newslistapi
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column '|keywords' in 'where clause'[/Users/zhanwen/Desktop/hqy_mobile/thinkphp/library/think/db/Connection.php:390]
+---------------------------------------------------------------
+[ 2020-02-18T15:41:39+08:00 ] 0.0.0.0 POST /api/taxation/newslistapi
+[ error ] [8]A non well formed numeric value encountered[/Users/zhanwen/Desktop/hqy_mobile/thinkphp/library/think/Model.php:514]
+---------------------------------------------------------------
+[ 2020-02-18T15:43:18+08:00 ] 0.0.0.0 POST /api/taxation/newslistapi
+[ error ] [0]类型错误: Too few arguments to function think\db\Query::field(), 0 passed in /Users/zhanwen/Desktop/hqy_mobile/application/v1/service/Taxationservice.php on line 310 and at least 1 expected[/Users/zhanwen/Desktop/hqy_mobile/thinkphp/library/think/db/Query.php:789]
+---------------------------------------------------------------
+[ 2020-02-18T17:55:22+08:00 ] 0.0.0.0 POST /api/taxation/newslistapi
+[ error ] [2]Use of undefined constant ‘title’ - assumed '‘title’' (this will throw an Error in a future version of PHP)[/Users/zhanwen/Desktop/hqy_mobile/application/v1/service/Taxationservice.php:291]
+---------------------------------------------------------------
+[ 2020-02-18T18:05:38+08:00 ] 0.0.0.0 POST /api/taxation/newslistapi
+[ error ] [0]致命错误: Call to undefined function app\api\controller\toArray()[/Users/zhanwen/Desktop/hqy_mobile/application/api/controller/Taxation.php:84]
