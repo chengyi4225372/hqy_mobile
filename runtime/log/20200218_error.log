@@ -58,3 +58,9 @@
 ---------------------------------------------------------------
 [ 2020-02-18T15:43:18+08:00 ] 0.0.0.0 POST /api/taxation/newslistapi
 [ error ] [0]类型错误: Too few arguments to function think\db\Query::field(), 0 passed in /Users/zhanwen/Desktop/hqy_mobile/application/v1/service/Taxationservice.php on line 310 and at least 1 expected[/Users/zhanwen/Desktop/hqy_mobile/thinkphp/library/think/db/Query.php:789]
+---------------------------------------------------------------
+[ 2020-02-18T17:55:22+08:00 ] 0.0.0.0 POST /api/taxation/newslistapi
+[ error ] [2]Use of undefined constant ‘title’ - assumed '‘title’' (this will throw an Error in a future version of PHP)[/Users/zhanwen/Desktop/hqy_mobile/application/v1/service/Taxationservice.php:291]
+---------------------------------------------------------------
+[ 2020-02-18T18:05:38+08:00 ] 0.0.0.0 POST /api/taxation/newslistapi
+[ error ] [0]致命错误: Call to undefined function app\api\controller\toArray()[/Users/zhanwen/Desktop/hqy_mobile/application/api/controller/Taxation.php:84]

@@ -71,16 +71,16 @@ class Taxation extends Apis{
    */
   public function newslistapi(){
       if($this->request->isPost()){
-        $page = input('post.page','','int');
-        $size = input('post.size','','int');
+        $page     = input('post.page','','int');
+        $size     = input('post.size','','int');
         $keywords = input('post.keywords','','trim');
-        $title = input('post.title','','trim');
+        $title    = input('post.title','','trim');
         
         //获取数据
         $list = Taxationservice::instance()->getnewslistapi($page,$size,$keywords,$title);
        //获取总页数 
         $countpage = Taxationservice::instance()->gettotalpages($keywords,$size,$title);
-
+         
         if(empty($list)||!isset($list)){
             $this->jsonMsg(400,'请求数据为空！');
         }

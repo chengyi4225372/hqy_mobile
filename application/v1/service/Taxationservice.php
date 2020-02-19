@@ -285,9 +285,10 @@ class Taxationservice
            $page = ($page -1) * $size;
         }
         
-        if(empty($keywords) || !isset($keywords) && empty($title) && !isset($title) ){
+        if(empty($keywords) || !isset($keywords)){
             $w = [
                 'status'=>1,
+                'title'=>['like','%'.$title.'%'],
             ];
         }else{
             $new_title = explode(',',$keywords);
@@ -311,13 +312,13 @@ class Taxationservice
                 ->order('create_time desc')
                 ->limit($page,$size)->select();
 
-         if(empty($list)|| !isset($list)){
+         if(empty($list)|| !isset($list) || is_null($list)){
              return $list ='';
          }
          
          foreach($list as $k =>$val){
              $list[$k]['imgs'] = config('curl.hys').$list[$k]['imgs'];
-             $list[$k]['time'] = date('Y-m-d',strtotime($list[$k]['time']));
+             $list[$k]['time'] = date('Y-m-d',$list[$k]['time']);
          }
          
          return $list;
@@ -335,9 +336,10 @@ class Taxationservice
             $size =8;
         } 
 
-        if(empty($keywords) || !isset($keywords) && empty($title) && ！isset($title)){
+        if(empty($keywords) || !isset($keywords)){
             $w = [
                 'status'=>1,
+                'title'=>['like','%'.$title.'%'],
             ];
         }else {
             $new_title = explode(',',$keywords);
@@ -390,10 +392,14 @@ class Taxationservice
            return $info='';
        }
 
+
        //上一篇
        $top = Taxation::instance()
               ->where('create_time','GT',$info['time'])
-              ->field('id,title')->find();
+              ->where('status',1)
+              ->field('id,title')
+              ->order('create_time asc')
+              ->find();
         if(empty($top)|| !isset($top)){
            $top ='这是第一篇了！';
         }      
@@ -401,15 +407,19 @@ class Taxationservice
        //下一篇
        $next = Taxation::instance()
        ->where('create_time','LT',$info['time'])
-       ->field('id,title')->find();
+       ->where('status',1)
+       ->field('id,title')
+       ->order('create_time desc')
+       ->find();
 
        if(empty($next)|| !isset($next)){
         $next ='这是最后一篇了！';
        } 
-        
+       
+    
        $info['top']  = $top;
        $info['next'] = $next;
-       $info['time'] = date('Y-m-d',strtotime($info['time']));
+       $info['time'] = date('Y-m-d',$info['time']);
        $url = config('curl.hys');
        $pregRule = "/<[img|IMG].*?src=[\'|\"](.*?(?:[\.jpg|\.jpeg|\.png|\.gif|\.bmp]))[\'|\"].*?[\/]?>/";
        $info['content'] = preg_replace($pregRule, '<img src="' . $url . '${1}">', $info['content']);
