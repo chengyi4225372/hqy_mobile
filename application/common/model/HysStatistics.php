@@ -1,7 +1,8 @@
 <?php
 namespace app\common\model;
-use think\model;
-class HysStatistics
+
+use think\Model;
+class HysStatistics extends Model
 {
     //静态对象
     protected static $readInstance = null;

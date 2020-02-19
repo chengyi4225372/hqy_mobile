@@ -146,12 +146,12 @@ class Taxation extends Apis{
      */
     public function hysstatistics()
     {
-        if(!$this->request->isPost()){
-            return false;
+        if($this->request->isPost()){
+            $return_data = Apiservice::instance()->hysstatistics();
+            if($return_data == false) return json(['code' => 400,'message' => '更新失败']);
+            return json(['code' => 200,'message' => '更新成功']);
         }
-        $return_data = Apiservice::instance()->hysstatistics();
-        if($return_data == false) return json(['code' => 400,'message' => '更新失败']);
-        return json(['code' => 200,'message' => '更新成功']);
+        return false;
     }
 
     /**
@@ -161,12 +161,12 @@ class Taxation extends Apis{
      */
     public function gethyscount()
     {
-        if(!$this->request->isPost()){
-            return false;
+        if($this->request->isPost()){
+            $return_data = Apiservice::instance()->getHysCount();
+            if($return_data == false) return json(['code' => 400,'message' => '查询失败']);
+            return json(['code' => 200,'message' => 'success','totals' => $return_data['totals']]);
         }
-        $return_data = Apiservice::instance()->getHysCount();
-        if($return_data == false) return json(['code' => 400,'message' => '更新失败']);
-        return json(['code' => 200,'message' => 'success','totals' => $return_data['totals']]);
+        return false;
     }
 
   

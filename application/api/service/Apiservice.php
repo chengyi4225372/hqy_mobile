@@ -11,8 +11,6 @@ use think\Config;
 class Apiservice
 {
     protected static $instance = null;
-    protected $pageSize = 8;
-    protected $current_page = 1;
     /**
      * @DESC：单例
      * @return null|static
