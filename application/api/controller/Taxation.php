@@ -7,7 +7,7 @@ use app\api\controller\Apis;
 use app\v1\service\Customerservice;
 use app\v1\service\Taxationservice;
 use app\v1\service\Hkeyservice;
-
+use app\api\service\Apiservice;
 class Taxation extends Apis{
    
 /**
@@ -134,28 +134,33 @@ class Taxation extends Apis{
     }
 
     /**
-      * 统计在线报名人数
-      * todo 未完成
-      */
-    public function huitotalpeople(){
-       if($this->request->isPost()){
-     
-       }
-
-       return false;
+     * @DESC：惠优税统计报名人数
+     * @author: jason
+     * @date: 2020-01-14 11:39:51
+     */
+    public function hysstatistics()
+    {
+        if(!$this->request->isPost()){
+            return false;
+        }
+        $return_data = Apiservice::instance()->hysstatistics();
+        if($return_data == false) return json(['code' => 400,'message' => '更新失败']);
+        return json(['code' => 200,'message' => '更新成功']);
     }
-  
 
     /**
-     * 增加在线报名人数
-     * todo 未完成
+     * @DESC：查询惠优税有多少报名人数
+     * @author: jason
+     * @date: 2020-01-14 01:57:28
      */
-    public function addhuipeople(){
-        if($this->request->isPost()){
-
+    public function gethyscount()
+    {
+        if(!$this->request->isPost()){
+            return false;
         }
-        
-        return false;
+        $return_data = Apiservice::instance()->getHysCount();
+        if($return_data == false) return json(['code' => 400,'message' => '更新失败']);
+        return json(['code' => 200,'message' => 'success','totals' => $return_data['totals']]);
     }
 
   
